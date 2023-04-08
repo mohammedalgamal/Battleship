@@ -21,5 +21,5 @@ test("isSunk method in Ship class works correctly", () => {
     expect(mockShip.isSunk()).toBe(false);
     mockShip.hit();
     mockShip.hit();
-    expect(mockShip.isSunk()).toBe(true);
+    expect(mockShip.sunk).toBe(true);
 }); 
