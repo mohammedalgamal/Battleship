@@ -11,6 +11,7 @@ export default class GameBoard {
 
         this.board = makeBoard();
         this.ships = [];
+        this.isAllSunk = false;
     };
 
     placeShip(length, startPosition, direction = "horizontal") {
@@ -29,6 +30,21 @@ export default class GameBoard {
         this.ships.push(ship);
     };
 
+    getIsAllSunk() {
+        return this.isAllSunk;
+    }
+
+    setIsAllSunk() {
+        for (let i = 0; i < this.ships.length; i++) {
+            if (!this.ships[i].isSunk()) {
+                this.isAllSunk = false;
+                return;
+            };
+        };
+
+        this.isAllSunk = true;
+    }
+
     receiveAttack(place) {
         const boardValueAtPlace = this.board[place[0]][place[1]];
         if (boardValueAtPlace === 0) {
@@ -40,6 +56,7 @@ export default class GameBoard {
             for (let i = 0; i < this.ships.length; i++) {
                 if (this.ships[i].isPlaceInCoordinates(place)) {
                     this.ships[i].hit();
+                    this.setIsAllSunk();
                     break;
                 };
             };

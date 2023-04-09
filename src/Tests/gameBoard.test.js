@@ -130,6 +130,21 @@ test("Calling receiveAttack changes number of hits for the specified ship", () =
                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 2]]);
 
     expect(game.ships[1].hits).toBe(1);
-    expect(game.ships[0].hits).toBe(1);
-    
+    expect(game.ships[0].hits).toBe(1); 
+});
+
+test("Destroying all ships changes isAllSunk", () => {
+    const game = new GameBoard;
+    game.placeShip(4, [0, 0]);
+    game.receiveAttack([0, 0]);
+    game.receiveAttack([9, 9]);
+    game.receiveAttack([1, 5]);
+
+    expect(game.getIsAllSunk()).toBe(false);
+
+    game.receiveAttack([0, 1]);
+    game.receiveAttack([0, 2]);
+    game.receiveAttack([0, 3]);
+
+    expect(game.getIsAllSunk()).toBe(true);
 });
