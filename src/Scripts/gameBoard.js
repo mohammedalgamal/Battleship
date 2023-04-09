@@ -1,4 +1,4 @@
-import makeBoard from "./utils";
+import makeBoard, { isValidShipPlacement } from "./utils";
 
 // import Ship from "./ship";
 export default class GameBoard {
@@ -12,6 +12,7 @@ export default class GameBoard {
     };
 
     placeShip(length, startPosition, direction = "horizontal") {
+        if (!isValidShipPlacement(length, startPosition, direction)) return; 
         const move = direction === "horizontal" ? [0, 1] : [1, 0];
         let positionPointer = startPosition;
 

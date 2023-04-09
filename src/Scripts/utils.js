@@ -11,3 +11,10 @@ export default function makeBoard() {
 
     return board;
 };
+
+export function isValidShipPlacement(length, startPosition, direction) {
+    const places = direction === "horizontal" ? [0, length] : [length, 0];
+    const endPosition = [startPosition[0] + places[0], startPosition[1] + places[1]];
+    
+    return endPosition[0] <= 9 && endPosition[1] <= 9;
+};
