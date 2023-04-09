@@ -28,4 +28,21 @@ export default class GameBoard {
 
         this.ships.push(ship);
     };
+
+    receiveAttack(place) {
+        const boardValueAtPlace = this.board[place[0]][place[1]];
+        if (boardValueAtPlace === 0) {
+            this.board[place[0]][place[1]] = 2;
+        }
+        else {
+            this.board[place[0]][place[1]] = 3;
+            
+            for (let i = 0; i < this.ships.length; i++) {
+                if (this.ships[i].isPlaceInCoordinates(place)) {
+                    this.ships[i].hit();
+                    break;
+                };
+            };
+        };
+    };
 };

@@ -89,3 +89,47 @@ test("Placing ships adds ships correctly to ships array", () => {
                                    sunk: false, 
                                    coordinates: [[0, 0], [0, 1], [0, 2]] }]);
 });
+
+test("Calling receiveAttack changes the board accordingly", () => {
+    const game = new GameBoard;
+    game.placeShip(4, [0, 0]);
+    game.placeShip(4, [0, 3], "vertical");
+    game.receiveAttack([0, 0]);
+    game.receiveAttack([9, 9]);
+
+    expect(game.board).toEqual([[3, 1, 1, 1, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 2]]);
+});
+
+test("Calling receiveAttack changes number of hits for the specified ship", () => {
+    const game = new GameBoard;
+    game.placeShip(4, [0, 0]);
+    game.placeShip(3, [0, 5], "vertical");
+    game.placeShip(4, [0, 3], "vertical");
+    game.receiveAttack([0, 0]);
+    game.receiveAttack([9, 9]);
+    game.receiveAttack([1, 5]);
+
+    expect(game.board).toEqual([[3, 1, 1, 1, 0, 1, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 3, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 2]]);
+
+    expect(game.ships[1].hits).toBe(1);
+    expect(game.ships[0].hits).toBe(1);
+    
+});
