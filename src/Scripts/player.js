@@ -1,11 +1,20 @@
 import GameBoard from "./gameBoard";
 
 export default class Player {
-    constructor() {
+    constructor(type, oppBoard = {}) {
         const board = new GameBoard;
 
         this.isMyTurn = false;
         this.board = board;
-        this.oppBoard = {};
+        this.oppBoard = oppBoard;
+        this.isComputer = type === "computer"; 
+    };
+
+    setOppBoard(board) {
+        this.oppBoard = board;
+    };
+
+    attack(place) {
+        this.oppBoard.receiveAttack(place);
     };
 }
