@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 import Ship from "../Scripts/ship";
 
-
 // Ship class test cases
 test("Ship class Returns an object with the correct values", () => {
     const mockShip = new Ship(4);
-    expect(mockShip).toEqual({ length: 4, hits: 0, sunk: false });
+    expect(mockShip).toEqual({ length: 4, hits: 0, sunk: false, coordinates: [] });
 });
 
 test("Hit method in Ship class increases hits", () => {
@@ -23,3 +22,16 @@ test("isSunk method in Ship class works correctly", () => {
     mockShip.hit();
     expect(mockShip.sunk).toBe(true);
 }); 
+
+test("isPlaceInCoordinates works correctly", () => {
+    const mockShip = new Ship(2, 0, [[0, 0], [0, 1]]);
+    expect(mockShip.isPlaceInCoordinates([0, 0])).toBe(true);
+    expect(mockShip.isPlaceInCoordinates([0, 5])).toBe(false);
+});
+
+test("addPlaceToCoordinates works correctly", () => {
+    const mockShip = new Ship(4);
+    expect(mockShip.coordinates).toEqual([]);
+    mockShip.addPlaceToCoordinates([0, 0]);
+    expect(mockShip.coordinates).toEqual([[0, 0]]);
+});

@@ -62,3 +62,30 @@ test("Placing ships does nothing when coordinates aren't right", () => {
                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
 });
+
+test("Placing ships prevent ships collapse", () => {
+    const game = new GameBoard;
+    game.placeShip(4, [0, 0]);
+    game.placeShip(4, [0, 3], "vertical");
+
+    expect(game.board).toEqual([[1, 1, 1, 1, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
+});
+
+test("Placing ships adds ships correctly to ships array", () => {
+    const game = new GameBoard;
+    game.placeShip(3, [0, 0]);
+
+    expect(game.ships).toEqual([{ length: 3,
+                                   hits: 0, 
+                                   sunk: false, 
+                                   coordinates: [[0, 0], [0, 1], [0, 2]] }]);
+});

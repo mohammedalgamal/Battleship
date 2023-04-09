@@ -12,9 +12,22 @@ export default function makeBoard() {
     return board;
 };
 
-export function isValidShipPlacement(length, startPosition, direction) {
-    const places = direction === "horizontal" ? [0, length] : [length, 0];
-    const endPosition = [startPosition[0] + places[0], startPosition[1] + places[1]];
-    
-    return endPosition[0] <= 9 && endPosition[1] <= 9;
+export function isValidShipPlacement(length, startPosition, direction, board) {
+    const move = direction === "horizontal" ? [0, 1] : [1, 0];
+    let positionPointer = startPosition;
+
+    for (let i = 0; i < length; i++) {
+        if (positionPointer[0] > 9 || positionPointer[1] > 9) return false;
+        if (board[positionPointer[0]][positionPointer[1]] !== 0) return false;
+        positionPointer = [positionPointer[0] + move[0], positionPointer[1] + move[1]];
+    };
+
+    return true;
+};
+
+export function areEqualArrays(arr1, arr2) {
+    return Array.isArray(arr1) &&
+           Array.isArray(arr2) &&
+           arr1.length === arr2.length &&
+           arr1.every((val, index) => val === arr2[index]);
 };
