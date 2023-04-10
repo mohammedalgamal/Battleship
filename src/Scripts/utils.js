@@ -31,3 +31,28 @@ export function areEqualArrays(arr1, arr2) {
            arr1.length === arr2.length &&
            arr1.every((val, index) => val === arr2[index]);
 };
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        const temp = array[i];
+        // eslint-disable-next-line no-param-reassign
+        array[i] = array[j];
+        // eslint-disable-next-line no-param-reassign
+        array[j] = temp;
+    };
+};
+
+export function getAllPositions() {
+    const result = [];
+
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+            result.push([i, j]);
+        };
+    };
+    shuffleArray(result);
+    return result;
+};
