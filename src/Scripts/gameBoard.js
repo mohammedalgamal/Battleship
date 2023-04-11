@@ -50,7 +50,7 @@ export default class GameBoard {
         if (boardValueAtPlace === 0) {
             this.board[place[0]][place[1]] = 2;
         }
-        else {
+        else if (boardValueAtPlace === 1) {
             this.board[place[0]][place[1]] = 3;
             
             for (let i = 0; i < this.ships.length; i++) {

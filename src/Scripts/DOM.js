@@ -1,5 +1,5 @@
 export default function makeDOMBoard(player) {
-    const grid = document.querySelector(`.${player.type}`);
+    const grid = document.querySelector(`.${player.type}Grid`);
 
     grid.innerHTML = "";
 
@@ -7,8 +7,8 @@ export default function makeDOMBoard(player) {
         for (let j = 0; j < 10; j++) {
             grid.innerHTML += `<div 
                                 class="cell" 
-                                data-column="${i}" 
-                                data-row="${j}" 
+                                data-column="${j}" 
+                                data-row="${i}" 
                                 data-value="${player.board.board[i][j]}"></div>`; 
         };
     };
