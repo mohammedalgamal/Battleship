@@ -11,6 +11,10 @@ body {
             height: 2rem;
         }
 
+        .cell.hover {
+            background-color: gray;
+        }
+
         .cell[data-value="1"] {
             background-color: gray;
         }

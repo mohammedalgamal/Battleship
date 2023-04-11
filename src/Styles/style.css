@@ -9,6 +9,9 @@ body .grid .cell {
   width: 2rem;
   height: 2rem;
 }
+body .grid .cell.hover {
+  background-color: gray;
+}
 body .grid .cell[data-value="1"] {
   background-color: gray;
 }
