@@ -1,0 +1,25 @@
+body {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(10, 0fr);
+        gap: 5px;
+        margin: 1rem;
+
+        .cell {
+            border: 1px solid black;
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .cell[data-value="1"] {
+            background-color: gray;
+        }
+        .cell[data-value="2"] {
+            background-color: green;
+        }
+        .cell[data-value="3"] {
+            background-color: red;
+        }
+    }
+
+}

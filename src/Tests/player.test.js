@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import Player from "../Scripts/player";
 import GameBoard from "../Scripts/gameBoard";
+import { countOnes } from "../Scripts/utils";
 
 test("Making a player returns the correct object", () => {
     const mockPlayer = new Player("human");
@@ -70,4 +71,11 @@ test("Making random attacks works correctly", () => {
                                     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
                                     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
                                     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]);
+});
+
+test("populateBoard fills the board", () => {
+    const mockPlayer = new Player("player");
+    mockPlayer.populateBoard();
+
+    expect(countOnes(mockPlayer.board.board)).toBe(17);
 });
