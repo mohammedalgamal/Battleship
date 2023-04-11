@@ -1,23 +1,89 @@
-body .grid {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(215, 215, 199);
+}
+body button, body input[type=submit], body input[type=reset] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+body header {
+  width: 100vw;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body header .title {
+  color: black;
+  font-size: clamp(2rem, 15vw, 4rem);
+  font-weight: 700;
+}
+body main {
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+body main .grid {
   display: grid;
   grid-template-columns: repeat(10, 0fr);
-  gap: 5px;
   margin: 1rem;
+  border: 2px solid black;
 }
-body .grid .cell {
+body main .grid .cell {
   border: 1px solid black;
-  width: 2rem;
-  height: 2rem;
+  width: clamp(1rem, 15vw, 2.7rem);
+  height: clamp(1rem, 15vw, 2.7rem);
 }
-body .grid .cell.hover {
+body main .grid .cell.hover {
   background-color: gray;
 }
-body .grid .cell[data-value="1"] {
+body main .grid .cell[data-value="1"] {
   background-color: gray;
 }
-body .grid .cell[data-value="2"] {
+body main .grid .cell[data-value="2"] {
   background-color: green;
 }
-body .grid .cell[data-value="3"] {
+body main .grid .cell[data-value="3"] {
   background-color: red;
+}
+body footer {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+body footer .text {
+  color: black;
+  font-size: 20px;
+}
+@media (max-width: 333px) {
+  body footer .text {
+    font-size: 15px;
+  }
+}
+body footer .text a img {
+  height: 25px;
+  margin-bottom: 5px;
+  margin-left: 8px;
+  width: auto;
+}
+body footer .text a img:hover {
+  transform: scale(1.2);
 }/*# sourceMappingURL=style.css.map */

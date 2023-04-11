@@ -9,5 +9,4 @@ icon.rel = "icon";
 icon.href = logo;
 document.getElementsByTagName("head")[0].appendChild(icon);
 
-
 startGame();
