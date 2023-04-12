@@ -12,6 +12,10 @@ export default function makeBoard() {
     return board;
 };
 
+export function capitalize(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+};
+  
 export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -66,6 +70,20 @@ export function countOnes(board) {
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 10; j++) {
             if (board[i][j] === 1) {
+                counter++;
+            };
+        };
+    };
+
+    return counter;
+};
+
+export function countOnesAndThrees(board) {
+    let counter = 0;
+
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+            if (board[i][j] === 1 || board[i][j] === 3) {
                 counter++;
             };
         };

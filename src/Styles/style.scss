@@ -38,43 +38,54 @@ body {
         width: 100vw;
         height: 70vh;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
-        gap: 3rem;
+        align-items: center;
         @media (max-width: 700px) {
-            flex-direction: column;
             height: 100vh;
             margin-top: 2rem;
             margin-bottom: 2rem;
-            gap: 1.5rem;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(10, 0fr);
-            margin: 1rem;
-            border: 2px solid black;
-    
-            .cell {
-                border: 1px solid black;
-                width: clamp(2rem, 5vw, 2.7rem);
-                height: clamp(2rem, 5vw, 2.7rem);
+        .lower {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            @media (max-width: 700px) {
+                flex-direction: column;
+                gap: 1.5rem;
             }
-    
-            .cell.hover {
-                background-color: gray;
-            }
-    
-            .cell[data-value="1"] {
-                background-color: gray;
-            }
-            .cell[data-value="2"] {
-                background-color: green;
-            }
-            .cell[data-value="3"] {
-                background-color: red;
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(10, 0fr);
+                margin: 1rem;
+                border: 2px solid black;
+        
+                .cell {
+                    border: 1px solid black;
+                    width: clamp(2rem, 5vw, 2.7rem);
+                    height: clamp(2rem, 5vw, 2.7rem);
+                }
+        
+                .cell.hover {
+                    background-color: gray;
+                    cursor: pointer;
+                }
+        
+                .cell[data-value="1"] {
+                    background-color: gray;
+                }
+                .cell[data-value="2"] {
+                    background-color: green;
+                }
+                .cell[data-value="3"] {
+                    background-color: red;
+                }
             }
         }
+
     }
 
     footer {

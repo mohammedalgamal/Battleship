@@ -35,40 +35,51 @@ body main {
   width: 100vw;
   height: 70vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  body main {
+    height: 100vh;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+body main .lower {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
 }
 @media (max-width: 700px) {
-  body main {
+  body main .lower {
     flex-direction: column;
-    height: 100vh;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     gap: 1.5rem;
   }
 }
-body main .grid {
+body main .lower .grid {
   display: grid;
   grid-template-columns: repeat(10, 0fr);
   margin: 1rem;
   border: 2px solid black;
 }
-body main .grid .cell {
+body main .lower .grid .cell {
   border: 1px solid black;
   width: clamp(2rem, 5vw, 2.7rem);
   height: clamp(2rem, 5vw, 2.7rem);
 }
-body main .grid .cell.hover {
+body main .lower .grid .cell.hover {
+  background-color: gray;
+  cursor: pointer;
+}
+body main .lower .grid .cell[data-value="1"] {
   background-color: gray;
 }
-body main .grid .cell[data-value="1"] {
-  background-color: gray;
-}
-body main .grid .cell[data-value="2"] {
+body main .lower .grid .cell[data-value="2"] {
   background-color: green;
 }
-body main .grid .cell[data-value="3"] {
+body main .lower .grid .cell[data-value="3"] {
   background-color: red;
 }
 body footer {

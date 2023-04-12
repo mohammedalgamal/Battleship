@@ -10,3 +10,9 @@ icon.href = logo;
 document.getElementsByTagName("head")[0].appendChild(icon);
 
 startGame();
+
+// Allow play again button 
+const playAgain = document.querySelector(".playAgain");
+playAgain.addEventListener("click", () => {
+    startGame();
+});

@@ -10,13 +10,21 @@
 <body>
     <header>
         <div class="title">Battleship</div>
-        <button class="rotate btn" data-value="horizontal">Rotate</button>
     </header>
 
     <main>
-        <div class="grid playerGrid"></div>
+        <div class="upper">
+            <div class="text">Place your Carrier</div>
+            <div class="buttons">
+                <button class="rotate btn" data-value="horizontal">Horizontal<br>Rotate</button>
+                <button class="playAgain btn">Play Again</button>
+            </div>
+        </div>
+        <div class="lower">
+            <div class="grid playerGrid"></div>
 
-        <div class="grid computerGrid"></div>
+            <div class="grid computerGrid"></div>
+        </div>
     </main>
 
     <footer>
