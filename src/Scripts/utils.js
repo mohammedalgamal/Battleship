@@ -84,7 +84,7 @@ export function getUsedPositions(length, startPosition, direction) {
             result.push([i, j]);
         };
     };
-    // console.log("aa", result);
+    
     return result;
 };
 

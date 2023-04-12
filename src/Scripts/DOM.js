@@ -13,3 +13,13 @@ export default function makeDOMBoard(player) {
         };
     };
 };
+
+export function reloadDOMBoard(player) {
+    const gridCells = document.querySelectorAll(`.${player.type}Grid .cell`);
+
+    gridCells.forEach(cell => {
+        const cellPosition = [cell.dataset.column, cell.dataset.row];
+        // eslint-disable-next-line no-param-reassign
+        cell.dataset.value = player.board.board[cellPosition[1]][cellPosition[0]];
+    });
+}
