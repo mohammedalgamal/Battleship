@@ -33,11 +33,20 @@ body header .title {
 }
 body main {
   width: 100vw;
-  height: 75vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
+}
+@media (max-width: 700px) {
+  body main {
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+  }
 }
 body main .grid {
   display: grid;
@@ -47,8 +56,8 @@ body main .grid {
 }
 body main .grid .cell {
   border: 1px solid black;
-  width: clamp(1rem, 15vw, 2.7rem);
-  height: clamp(1rem, 15vw, 2.7rem);
+  width: clamp(2rem, 5vw, 2.7rem);
+  height: clamp(2rem, 5vw, 2.7rem);
 }
 body main .grid .cell.hover {
   background-color: gray;
