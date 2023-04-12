@@ -29,6 +29,18 @@ function removeHoverClass() {
 function playerMove(player, computer) {
     const oppCells = document.querySelectorAll(".computerGrid .cell");
     for (let i = 0; i < oppCells.length; i++) {
+        oppCells[i].addEventListener("mouseover", () => {
+            if (countOnesAndThrees(player.board.board) === 17) {
+                oppCells[i].classList.add("hover");
+            };
+        });
+
+        oppCells[i].addEventListener("mouseout", () => {
+            if (countOnesAndThrees(player.board.board) === 17) {
+                oppCells[i].classList.remove("hover");
+            };
+        });
+
         oppCells[i].addEventListener("click", () => {
             if (player.isMyTurn && oppCells[i].dataset.value <= 1 &&
                 countOnesAndThrees(player.board.board) === 17) {
