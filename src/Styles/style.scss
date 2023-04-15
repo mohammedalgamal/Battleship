@@ -27,14 +27,12 @@ body {
 
     header {
         width: 100vw;
-        height: 10rem;
         display: flex;
         align-items: center;
         justify-content: center;
 
         .title {
-            // color: black;
-            font-size: clamp(2rem, 15vw, 4rem);
+            font-size: clamp(2rem, 15vw, 5rem);
             font-weight: 700;
             font-family: MyFont;
         }
@@ -42,23 +40,17 @@ body {
 
     main {
         width: 100vw;
-        height: 70vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        @media (max-width: 700px) {
-            height: 100vh;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
 
         .lower {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 3rem;
-            @media (max-width: 700px) {
+            @media screen and (orientation:portrait) {
                 flex-direction: column;
                 gap: 1.5rem;
             }
@@ -71,24 +63,24 @@ body {
         
                 .cell {
                     border: 1px solid black;
-                    width: clamp(2rem, 5vw, 2.7rem);
-                    height: clamp(2rem, 5vw, 2.7rem);
+                    width: clamp(1.7rem, 4vw, 2.7rem);
+                    height: clamp(1.7rem, 4vw, 2.7rem);
                 }
         
                 .cell.hover {
-                    background-color: gray;
+                    background-color: rgb(179, 179, 179);
                     cursor: pointer;
                 }
-        
-                .cell[data-value="1"] {
-                    background-color: gray;
-                }
                 .cell[data-value="2"] {
-                    background-color: green;
+                    background-color: rgb(45, 163, 45);
                 }
                 .cell[data-value="3"] {
-                    background-color: red;
+                    background-color: rgb(197, 54, 54);
                 }
+            }
+
+            .playerGrid .cell[data-value="1"] {
+                background-color: rgb(65, 65, 65);
             }
         }
 
@@ -104,7 +96,7 @@ body {
 
         .text {
             color: black;
-            font-size: 20px;
+            font-size: 15px;
 
             @media (max-width: 333px) {
                 font-size: 15px;
@@ -112,7 +104,7 @@ body {
 
             a {
                 img {
-                    height: 25px;
+                    height: 20px;
                     margin-bottom: 5px;
                     margin-left: 8px;
                     width: auto;
