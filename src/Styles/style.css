@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "MyFont";
+  src: url("/src/Fonts/DigitaltS-Plum-be08.woff") format("woff");
+}
 body {
   min-height: 100vh;
   display: flex;
@@ -27,9 +31,9 @@ body header {
   justify-content: center;
 }
 body header .title {
-  color: black;
   font-size: clamp(2rem, 15vw, 4rem);
   font-weight: 700;
+  font-family: MyFont;
 }
 body main {
   width: 100vw;
