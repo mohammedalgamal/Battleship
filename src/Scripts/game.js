@@ -71,7 +71,7 @@ function rotateButtonHandler(e) {
     const rotateButton = e.target;
     rotateButton.dataset.value = rotateButton.dataset.value === "horizontal" ?
     "vertical": "horizontal";
-    rotateButton.innerHTML = `${capitalize(rotateButton.dataset.value)}<br>Rotate`;
+    rotateButton.innerHTML = `Rotate<br>Direction: ${capitalize(rotateButton.dataset.value)}`;
 }
 
 function placeShips(player) {
@@ -202,8 +202,7 @@ export default function startGame() {
     textArea.innerHTML = "Place your Carrier";
     rotateButton.disabled = false;
     rotateButton.dataset.value = "horizontal";
-    rotateButton.innerHTML = `${capitalize(rotateButton.dataset.value)}<br>Rotate`;
-    // rotateButton.removeEventListener("click", rotateButtonHandler(rotateButton));
+    rotateButton.innerHTML = `Rotate<br>Direction: ${capitalize(rotateButton.dataset.value)}`;
     rotateButton.addEventListener("click", rotateButtonHandler);
 
     computer.populateBoard();
