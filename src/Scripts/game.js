@@ -35,7 +35,19 @@ function playerMove(player, computer) {
             };
         });
 
+        oppCells[i].addEventListener("touchstart", () => {
+            if (countOnesAndThrees(player.board.board) === 17) {
+                oppCells[i].classList.add("hover");
+            };
+        });
+
         oppCells[i].addEventListener("mouseout", () => {
+            if (countOnesAndThrees(player.board.board) === 17) {
+                oppCells[i].classList.remove("hover");
+            };
+        });
+
+        oppCells[i].addEventListener("touchend", () => {
             if (countOnesAndThrees(player.board.board) === 17) {
                 oppCells[i].classList.remove("hover");
             };
@@ -93,7 +105,48 @@ function placeShips(player) {
             };
         });
 
+        cell.addEventListener("touchstart", () => {
+            if (countOnes(player.board.board) === 17) removeHoverClass();
+            const direction = rotateButton.dataset.value;
+            const cellPosition = [Number(cell.dataset.row), Number(cell.dataset.column)];
+            const isValid =  isValidShipPlacement(unplacedShipsLengths[pointer], cellPosition,
+                    direction, player.board.board) && 
+                    !isCollide(unplacedShipsLengths[pointer], cellPosition, direction, usedPositions);
+            
+            if (pointer <= 4 && isValid) {
+                cell.classList.add("hover");
+                for (let i = 1; i < unplacedShipsLengths[pointer]; i++) {
+                    const newPosition = direction === "horizontal" ? 
+                                                    [cellPosition[0], Number(cellPosition[1]) + i]:
+                                                    [Number(cellPosition[0]) + i, cellPosition[1]];
+    
+                    const newCell = document.querySelector(`.cell[data-row="${newPosition[0]}"][data-column="${newPosition[1]}"]`);
+                    newCell.classList.add("hover");
+                };
+            };
+        });
+
         cell.addEventListener("mouseout", () => {
+            const direction = rotateButton.dataset.value;
+            const cellPosition = [Number(cell.dataset.row), Number(cell.dataset.column)];
+            const isValid =  isValidShipPlacement(unplacedShipsLengths[pointer], cellPosition,
+                direction, player.board.board) && 
+                !isCollide(unplacedShipsLengths[pointer], cellPosition, direction, usedPositions);
+
+            if (pointer <= 4 && isValid) {         
+                cell.classList.remove("hover");
+                for (let i = 1; i < unplacedShipsLengths[pointer]; i++) {
+                    const newPosition = direction === "horizontal" ? 
+                                                    [cellPosition[0], Number(cellPosition[1]) + i]:
+                                                    [Number(cellPosition[0]) + i, cellPosition[1]];
+
+                    const newCell = document.querySelector(`.cell[data-row="${newPosition[0]}"][data-column="${newPosition[1]}"]`);
+                    newCell.classList.remove("hover");
+                };
+            };
+        });
+
+        cell.addEventListener("touchend", () => {
             const direction = rotateButton.dataset.value;
             const cellPosition = [Number(cell.dataset.row), Number(cell.dataset.column)];
             const isValid =  isValidShipPlacement(unplacedShipsLengths[pointer], cellPosition,
